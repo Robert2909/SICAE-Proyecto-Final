@@ -1,4 +1,4 @@
-# Usamos una imagen oficial y ligera de Java 17 (La versión pedida por el profe)
+# Usamos una imagen oficial y ligera de Java 17
 FROM eclipse-temurin:17-jdk-alpine
 
 # Creamos una carpeta dentro del contenedor donde vivirá nuestra app
