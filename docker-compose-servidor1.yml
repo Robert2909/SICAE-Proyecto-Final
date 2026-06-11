@@ -1,0 +1,57 @@
+version: '3.8'
+
+# Esta es la configuración del "Servidor 1" que exige tu rúbrica
+services:
+
+  # 1. Base de datos PostgreSQL
+  postgres-usuarios:
+    image: postgres:15-alpine
+    container_name: db_usuarios
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin # Cambiar por tu contraseña real
+      POSTGRES_DB: sicaeUsuario
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - sicae-network
+
+  # 2. AuthService (El tuyo)
+  auth-service:
+    build: 
+      context: ./authservice
+      dockerfile: Dockerfile
+    container_name: auth_service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres-usuarios
+    networks:
+      - sicae-network
+    environment:
+      # Sobrescribimos la variable para que apunte al contenedor de Postgres, no a localhost
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-usuarios:5432/sicaeUsuario
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+
+  # 3. UserService (El de Juanjo - Dejado preparado pero comentado para cuando él acabe)
+  # user-service:
+  #   build:
+  #     context: ./userservice
+  #     dockerfile: Dockerfile
+  #   container_name: user_service
+  #   ports:
+  #     - "8082:8082"
+  #   depends_on:
+  #     - postgres-usuarios
+  #   networks:
+  #     - sicae-network
+
+volumes:
+  pgdata:
+
+networks:
+  sicae-network:
+    driver: bridge
