@@ -20,6 +20,7 @@ services:
         volumes:
             # Se configura un volumen persistente para evitar que los datos de los usuarios se eliminen al apagar el contenedor
             - pgdata:/var/lib/postgresql/data
+            - ./BD/PosgreSQL:/docker-entrypoint-initdb.d
         networks:
             # Se asigna la base de datos a esta red virtual para que los demás microservicios puedan comunicarse con ella
             - sicae-network
@@ -47,17 +48,21 @@ services:
             - SPRING_DATASOURCE_PASSWORD=admin
     # UserService
     # Este servicio se encuentra comentado de momento debido a que aún no ha sido desarrollado, ese le toca a Juanjo
-    # user-service:
-    #   build:
-    #     context: ./userservice
-    #     dockerfile: Dockerfile
-    #   container_name: user_service
-    #   ports:
-    #     - "8082:8082"
-    #   depends_on:
-    #     - postgres-usuarios
-    #   networks:
-    #     - sicae-network
+    user-service:
+        build:
+            context: ./userservice
+            dockerfile: Dockerfile
+        container_name: user_service
+        ports:
+            - "8082:8082"
+        depends_on:
+            - postgres-usuarios
+        networks:
+            - sicae-network
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-usuarios:5432/sicaeUsuario
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=admin
 
     # En esta parte se definen los volúmenes que se utilizarán para la persistencia de datos
 volumes:
