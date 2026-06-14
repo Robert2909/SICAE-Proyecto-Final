@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "df7a9ab3-5e6a-48de-a1fe-7e98f2a68327",
+    "name": "SICAE - VehicleService",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54264944",
+    "_collection_link": "https://go.postman.co/collection/54264944-df7a9ab3-5e6a-48de-a1fe-7e98f2a68327?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01 - Login AuthService",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"admin1\",\r\n  \"password\": \"contra1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "02 - Registrar vehículo",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABC1237\",\r\n  \"color\": \"Azul\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"vehiculo pa probar 4\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "03 - Buscar vehículos por usuario",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/buscarPorUsuario/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "buscarPorUsuario",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "04 - Registrar placa repetida",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABC1234\",\r\n  \"color\": \"Rojo\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"Vehiculo pa probar\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "05 - Editar vehículo",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 4,\r\n  \"placa\": \"XYZ9876\",\r\n  \"color\": \"Azul\",\r\n  \"anio\": 2021,\r\n  \"descripcion\": \"vehiculo editado\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/editar/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "editar",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "06 - Cambiar estatus",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/actualizarEstatus/1/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "actualizarEstatus",
+            "1",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "07 - Validar vehículo para ParkingService",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/validar?idUsuario=2&placa=XYZ9876",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "validar"
+          ],
+          "query": [
+            {
+              "key": "idUsuario",
+              "value": "2"
+            },
+            {
+              "key": "placa",
+              "value": "XYZ9876"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "08 - Petición sin token",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/buscarPorUsuario/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "buscarPorUsuario",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "09 - Registrar quinto vehículo activo",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 2,\r\n  \"placa\": \"QWE1234\",\r\n  \"color\": \"Blanco\",\r\n  \"anio\": 2022,\r\n  \"descripcion\": \"Quinto vehiculo de prueba\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+Ya quedó funcional el microservicio de vehículos.
+
+Servicio
+VehicleService
+Puerto: 8083
+Base de datos: MySQL - sicaevehiculo
+Ruta base: http://localhost:8083/vehiculos
+
+//////////////////////
+Autenticación
+Todas las peticiones protegidas necesitan token de AuthService.
+
+Formato:
+
+Authorization: Bearer <token>
+
+El token se obtiene desde:
+
+POST http://localhost:8081/auth/login
+
+//////////////////////
+
+REGISTRA ESTOS VEHICULOS EN EL POSTMAN PRIMERO PARA QUE PUEDAS HACER LA PRUEBA QUE VIENE ABAJO, PRIMERO CORRES LA CONSULTA PARA SACAR EL TOKEN QUE ES: METODO: POST URL http://localhost:8081/auth/login 
+BODY 
+{
+  "username": "admin1",
+  "password": "contra1"
+}
+
+AHORA SI HACES OTRO REQUEST CON ESTOS METODOS:
+METODO: POST URL: http://localhost:8083/vehiculos/agregar
+
+Body para registrar vehículo
+
+
+{
+  "idUsuario": 2,
+  "idModelo": 1,
+  "placa": "ABC1234",
+  "color": "Rojo",
+  "anio": 2020,
+  "descripcion": "Vehiculo de prueba"
+}
+
+
+///////////////////
+ESTE ES EL ENDPOINT PARA QUE HAGAS LA PRUEBA DEL PARKING
+Endpoint importante para ParkingService
+Este es el que debe usar ParkingService para validar si una placa pertenece a un usuario y si el vehículo está activo:
+
+GET http://localhost:8083/vehiculos/validar?idUsuario=2&placa=ABC1234
+Si el vehículo existe, pertenece al usuario y está activo, responde con los datos completos del vehículo.
+
+Si no cumple, responde error:
+
+El vehículo no existe, no esta asignado al usuario o esta inactivo.
+
+////////////////////
+Endpoints disponibles
+
+GET   /vehiculos/buscarPorUsuario/{idUsuario}
+POST  /vehiculos/agregar
+PUT   /vehiculos/editar/{idVehiculo}
+PATCH /vehiculos/actualizarEstatus/{idVehiculo}/{idUsuario}
+GET   /vehiculos/validar?idUsuario={idUsuario}&placa={placa}
+
+//////////////////
+
+Reglas ya probadas
+
+Token obligatorio
+Registro exitoso
+Consulta por usuario
+Placa repetida rechazada
+Edición exitosa
+Cambio de estatus activo/inactivo
+Validación para ParkingService
+Petición sin token rechazada
+Límite de máximo 4 vehículos activos por usuario

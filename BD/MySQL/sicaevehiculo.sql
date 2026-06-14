@@ -116,6 +116,7 @@ CREATE TABLE `vehiculo`  (
   `placa` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `color` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `anio` int NOT NULL,
+  `estatus` bit(1) NOT NULL DEFAULT b'1',
   `descripcion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idVehiculo`) USING BTREE,
   INDEX `idModelo`(`idModelo` ASC) USING BTREE,
@@ -130,6 +131,6 @@ CREATE TABLE `vehiculo`  (
 -- View structure for vehiculofullinfo
 -- ----------------------------
 DROP VIEW IF EXISTS `vehiculofullinfo`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vehiculofullinfo` AS select `v`.`idVehiculo` AS `idVehiculo`,`v`.`idUsuario` AS `idUsuario`,`v`.`claveVehiculo` AS `claveVehiculo`,`m1`.`idMarca` AS `idMarca`,`m1`.`marca` AS `marca`,`v`.`idModelo` AS `idModelo`,`m`.`modelo` AS `modelo`,`v`.`placa` AS `placa`,`v`.`color` AS `color`,`v`.`anio` AS `anio`,`v`.`descripcion` AS `descripcion` from ((`vehiculo` `v` join `modelo` `m` on((`m`.`idModelo` = `v`.`idModelo`))) join `marca` `m1` on((`m1`.`idMarca` = `m`.`idMarca`)));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vehiculofullinfo` AS select `v`.`idVehiculo` AS `idVehiculo`,`v`.`idUsuario` AS `idUsuario`,`v`.`claveVehiculo` AS `claveVehiculo`,`m1`.`idMarca` AS `idMarca`,`m1`.`marca` AS `marca`,`v`.`idModelo` AS `idModelo`,`m`.`modelo` AS `modelo`,`v`.`placa` AS `placa`,`v`.`color` AS `color`,`v`.`anio` AS `anio`,`v`.`estatus` AS `estatus`,`v`.`descripcion` AS `descripcion` from ((`vehiculo` `v` join `modelo` `m` on((`m`.`idModelo` = `v`.`idModelo`))) join `marca` `m1` on((`m1`.`idMarca` = `m`.`idMarca`)));
 
 SET FOREIGN_KEY_CHECKS = 1;
