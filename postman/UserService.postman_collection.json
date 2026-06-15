@@ -1,0 +1,2507 @@
+{
+  "info": {
+    "_postman_id": "72f2308d-fceb-42b7-a4fd-d6dcf420e7a5",
+    "name": "UserService",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54243206",
+    "_collection_link": "https://go.postman.co/collection/54243206-72f2308d-fceb-42b7-a4fd-d6dcf420e7a5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AgregarUsuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AgregarUsuarioSin-token",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AgregarUsuario-tokenMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "token_invalidojejejeje",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AgregarUsuarioSin-permisoAdmin",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-idrolMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 22,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-idtipousuariomal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-idtipousuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n \r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-idprogramaE",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-idprogramaEmal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-nombre",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-apellidoP",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-apellidoM",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-correo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-correoMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan-SINARROBA_j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-correoUsado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-telefono",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-usuername",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-usuarioUsado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuariosin-password",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EditarUsuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EditarUsuarioSin-token",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EditarUsuario-tokenMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "token_invalidojejejeje",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EditarUsuario-idUsuarioMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/9999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-idRol",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-idrolMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 22,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado1@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-idtipousuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n ,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-idtipousuariomal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado1@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-idprogramaE",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-idprogramaEmal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 99,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado1@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-nombre",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  ,\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-nombreLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-apellidoP",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  ,\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-apellidoPLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-apellidoMLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-correo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  ,\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-correoMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johaneditado-SINARROBA_j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-correoLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"correoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-correoUsado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditarSin-telefono",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-telefonoLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567891011\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-edicionUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"usuarioCambiado\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-edicionContra",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"password\":\"123456789\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-edicionClave",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"claveUsuario\": \"PRU-999\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioEditar-edicionTiempoA",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"tiempoActualizacion\": \"2000-01-01T00:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "VerPerfil",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "VerPerfilSin-token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "VerPerfil-tokenMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "token_invalidojejejeje",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "VerPerfilSin-idUsuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "VerPerfil-idUsuarioMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatus",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/6/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "6",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatus-yomismo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/3/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "3",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatusSin-token",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "4",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatus-tokenMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "token_invalidojejejeje",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "4",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatusSin-idUsuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus//2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatusSin-idRol",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "4",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatus-idUsuarioMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/999/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "999",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatus-idRolMal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "4",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CambiarEstatusSin-permisoAdmin",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "4",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "user_url",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "idUsuario",
+      "value": ""
+    }
+  ]
+}

@@ -3,7 +3,7 @@ package com.sicae.userservice.dto;
 import java.time.LocalDateTime;
 
 // Este DTO sirve para regresar información completa del usuario.
-// No incluye password porque nunca se debe regresar la contraseña en una respuesta.
+// No incluye password porque no se pide.
 public class UsuariosResponseDTO {
     
     private Integer idUsuario;

@@ -46,14 +46,14 @@ public class UsuarioController {
             return ResponseEntity.ok(mensajeExito);
             
         } catch (Exception e) {
-            // Si alguna validación falló en el servicio (por ejemplo, no era admin o faltaban datos), 
+            // Si alguna validación falló en el servicio, por ejemplo, no era admin o faltaban datos
             // cachamos el error aquí y mandamos el mensaje que especificamos.
             return ResponseEntity.badRequest().body("No pudo completarse: " + e.getMessage());
         }
     }
     
    // Este es nuestro segundo endpoint chicos. Sirve para editar algun usuario.
-    // solo jala si le pasas estrictamente el token del admin en el header (nuestro cadenero no deja pasar a cualquiera)
+    // solo jala si le pasas estrictamente el token del admin en el header
     // y necesitamos mandarle por la URL el id del usuario que vamos a editar, además del body con los datos nuevos.
     @PutMapping("/editar/{idUsuario}")
     public ResponseEntity<?> editarUsuario(@RequestHeader("Authorization") final String authHeader, @PathVariable Integer idUsuario, @RequestBody UsuariosRequestDTO nuevoUsuario) {
@@ -75,7 +75,7 @@ public class UsuarioController {
             return ResponseEntity.ok(mensajeExito);
 
         } catch (Exception e) {
-            // Si algo tronó en el servicio (tipo, el usuario no era admin o no existía el id), 
+            // Si algo tronó en el servicio como el tipo, que no era admin o no existía el id
             // cachamos el error aquí y mandamos el mensaje que especificamos.
             return ResponseEntity.badRequest().body("No pudo completarse: " + e.getMessage());
         }
@@ -83,7 +83,7 @@ public class UsuarioController {
     
     // Este el tercer endpoint, es para ver el perfil de usuario 
     // Usamos GetMapping porque solo vamos a consultar datos, no le vamos a mover a nada en la BD.
-    // Solo necesitamos el idUsuario en la ruta (@PathVariable) para saber a quién buscar.
+    // Solo necesitamos el idUsuario en la ruta para saber a quién buscar.
     @GetMapping("/verPerfil/{idUsuario}")
     public ResponseEntity<?> verPerfil(@RequestHeader("Authorization") final String authHeader,@PathVariable Integer idUsuario) {
         
@@ -96,7 +96,7 @@ public class UsuarioController {
             // Le quitamos la palabra "Bearer " con el substring(7) para dejar el token limpio
             String tokenPuro = authHeader.substring(7);
             
-            //llamamos a UsuarioService para armar el paquete (DTO) con todos los datos del usuario.
+            //llamamos a UsuarioService para armar el dto con todos los datos del usuario.
             //Le mandamos el token para que valide quién lo está pidiendo y el id del perfil que queremos ver.
             UsuariosResponseDTO mensajePerfil = usuarioService.verperfil(tokenPuro, idUsuario);
             

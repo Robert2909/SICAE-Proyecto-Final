@@ -26,7 +26,7 @@ public class UsuarioService {
     }
     
     
-    // En esta parte se hace uso del repository para poder hacer la consulta a la base de datos
+    // En esta parte se hace uso del repository para poder hacer las consultas a la base de datos
     private final UsuarioRepository usuarioRepository; 
 
     public UsuarioService(UsuarioRepository usuarioRepository) {
@@ -42,7 +42,7 @@ public class UsuarioService {
         }
     }
     
-    //Aqui ya con el token bueno, antes que nada lo validamos por seguridad, entramos a lo que es el palyload del token, que es donde tiene su informacion. De ahi extraemos el user, conel .getSubjetc()
+    //Aqui ya con el token bueno, antes que nada lo validamos, entramos a lo que es el palyload del token, que es donde tiene su informacion. De ahi extraemos el user, conel .getSubjetc()
     public String obtenerUsuarioDelToken(String token) {
         Claims claims = Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload();
         return claims.getSubject(); 
@@ -95,8 +95,14 @@ public class UsuarioService {
         if (nuevoUsuario.getNombre() == null || nuevoUsuario.getNombre().isEmpty()) {
             throw new RuntimeException("Falta asignar el nombre del nuevo usuario.");
         }
+        if (nuevoUsuario.getNombre().length() > 50) {
+            throw new RuntimeException("El nombre es demasiado largo.");
+        }
         if (nuevoUsuario.getApellidoPaterno() == null || nuevoUsuario.getApellidoPaterno().isEmpty()) {
             throw new RuntimeException("Falta asignar el apellido paterno del nuevo usuario.");
+        }
+        if (nuevoUsuario.getApellidoPaterno().length() > 50) {
+            throw new RuntimeException("El apellido paterno es demasiado largo.");
         }
         if (nuevoUsuario.getIdProgramaEducativo() == null) {
             throw new RuntimeException("Falta asignar el programa educativo del nuevo usuario.");
@@ -107,11 +113,22 @@ public class UsuarioService {
         if (nuevoUsuario.getPassword() == null || nuevoUsuario.getPassword().isEmpty()) {
             throw new RuntimeException("Falta asignar el password del nuevo usuario.");
         }
-        if (nuevoUsuario.getEmail() == null || nuevoUsuario.getEmail().isEmpty() || !nuevoUsuario.getEmail().matches("^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")) {
-            throw new RuntimeException("Falta asignar el email del nuevo usuario o no tiene el formato valido");
+        if (nuevoUsuario.getEmail() == null || nuevoUsuario.getEmail().isEmpty()) {
+            throw new RuntimeException("Falta asignar el email del nuevo usuario");
         }
+        if (nuevoUsuario.getEmail().length() > 100) {
+            throw new RuntimeException("El correo es demasiado largo.");
+        }
+        
+        if(!nuevoUsuario.getEmail().matches("^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")){
+            throw new RuntimeException("El correo proporcioando no tiene el formato valido");
+        }
+        
         if (nuevoUsuario.getTelefono() == null || nuevoUsuario.getTelefono().isEmpty()) {
             throw new RuntimeException("Falta asignar el teléfono del nuevo usuario.");
+        }
+        if (nuevoUsuario.getTelefono().length() > 13) {
+            throw new RuntimeException("El teléfono es demasiado largo.");
         }
                                     
         
@@ -248,7 +265,7 @@ public class UsuarioService {
             throw new RuntimeException("Falta asignar el idRol.");
         }
 
-        //Checamos que el token
+        //Checamos lo del token
         boolean tokenValido = validarToken(token);
         if (tokenValido == false) {
             throw new RuntimeException("El token es inválido o ya expiró");
@@ -264,7 +281,7 @@ public class UsuarioService {
             throw new RuntimeException("El usuario del token no existe en la base de datos");
         }
 
-        //Validamos si es administrador (nuestro id de admin es el 1).
+        //Validamos si es administrador, recuerden que es 1 para admin.
         if (usuario.getIdRol() != 1) {
             throw new RuntimeException("ERROR NO ERES ADMIN, NO PUEDES CAMBIAR EL ESTATUS DE USUARIOS");
         }
@@ -287,14 +304,14 @@ public class UsuarioService {
             throw new RuntimeException("No puedes cambiar tu propio estatus");
         }
 
-        String nuevoEstatus = "";
+        Boolean nuevoEstatus;
 
         //Si está activo(1), lo mandamos a inactivo (0). 
         // Si estaba inactivo(0), lo activamos (0).
         if (usuarioEncontrado.getEstatus() == true) {
-            nuevoEstatus = "0";
+            nuevoEstatus = false;
         } else {
-            nuevoEstatus = "1";
+            nuevoEstatus = true;
         }
         
         // Aqui mandamos los parametros a repository 
@@ -351,8 +368,8 @@ public class UsuarioService {
         usuarioEditado.setEmail(usuarioSoli.getEmail());
         usuarioEditado.setTelefono(usuarioSoli.getTelefono());
 
-        //Los de aqui se pide que no se muevan, asi que no son editables desde este endpoint.
-        // Así que los pasamos tal cual los sacamos del usuario original del usuarioEncontrado.
+        //Los de aqui se pide que no se muevan, asi que no son editables
+        // Así que los pasamos tal cual los sacamos del usuario original del usuarioEncontrado
         usuarioEditado.setUsername(usuarioEncontrado.getUsername());
         usuarioEditado.setPassword(usuarioEncontrado.getPassword());
         usuarioEditado.setClaveUsuario(usuarioEncontrado.getClaveUsuario());
@@ -398,8 +415,11 @@ public class UsuarioService {
         }
 
         // Verificamos el correo, formato y caracteres
-        if (usuarioEditado.getEmail() == null || usuarioEditado.getEmail().isEmpty() || !usuarioEditado.getEmail().matches("^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")) {
-            throw new RuntimeException("Falta asignar el email del usuario o no tiene el formato valido");
+        if (usuarioEditado.getEmail() == null || usuarioEditado.getEmail().isEmpty()) {
+            throw new RuntimeException("Falta asignar el email del usuario");
+        }
+        if(!usuarioEditado.getEmail().matches("^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")){
+            throw new RuntimeException("El correo proporcioando no tiene el formato valido");
         }
         if (usuarioEditado.getEmail().length() > 100) {
             throw new RuntimeException("El correo es demasiado largo.");
@@ -410,7 +430,7 @@ public class UsuarioService {
             throw new RuntimeException("Falta asignar el teléfono del usuario.");
         }
         // Terminamos con limitaciones para el telefono
-        if (usuarioEditado.getTelefono().length() > 15) {
+        if (usuarioEditado.getTelefono().length() > 13) {
             throw new RuntimeException("El teléfono es demasiado largo.");
         }
 

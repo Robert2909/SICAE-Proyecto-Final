@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 public interface UsuarioRepository {
     
     //Nota: hey, no quiten los \" porque en mi caso me da un buen de errores al tratar de conectarse a la tabla usuarios.
-    //vi que con robert no pasaba pero a mi si desde que meti mi primera peticion a postman
+    //vi que con robert no pasaba pero a mi si desde que meti mi primera peticion a postman, asi que si les sirve ocupenlo
     
     // En esta parte se hace la consulta a la base de datos para encontrar al usuario
     // Se utiliza el @Select para poder pasar el username como parametro a la consulta SQL
@@ -32,7 +32,7 @@ public interface UsuarioRepository {
     Usuario findByemail(@Param("email") String email);
     
     @Insert("INSERT INTO \"usuario\" (\"idRol\", \"idTipoUsuario\", \"nombre\", \"apellidoPaterno\", \"apellidoMaterno\", \"claveUsuario\", \"email\", \"telefono\", \"username\", \"password\", \"estatus\", \"idProgramaEducativo\", \"tiempoCreacion\", \"tempoActualizacion\") " +
-            "VALUES (#{idRol}, #{idTipoUsuario}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{claveUsuario}, #{email}, #{telefono}, #{username}, #{password}, CASE WHEN #{estatus} THEN B'1' ELSE B'0' END, #{idProgramaEducativo}, #{tiempoCreacion}, #{tiempoActualizacion})")
+            "VALUES (#{idRol}, #{idTipoUsuario}, #{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{claveUsuario}, #{email}, #{telefono}, #{username}, #{password}, CAST(CAST(#{estatus} AS int) AS bit), #{idProgramaEducativo}, #{tiempoCreacion}, #{tiempoActualizacion})")
     void registrarUsuario(Usuario usuario);
     
     
@@ -48,8 +48,8 @@ public interface UsuarioRepository {
     @Select("SELECT COUNT(*) FROM \"tipoUsuario\" WHERE \"idTipo\" = #{idTipo}")
     Integer findByidTipo(@Param("idTipo") Integer idTipo);
     
-    @Update("UPDATE \"usuario\" SET \"estatus\" = CAST(#{nuevoEstatus} AS bit), \"tempoActualizacion\" = #{tiempoActualizacion} WHERE \"idUsuario\" = #{idUsuario}")
-    Integer actualizarEstatus(@Param("idUsuario") Integer idUsuario, @Param("nuevoEstatus") String nuevoEstatus, @Param("tiempoActualizacion") LocalDateTime tiempoActualizacion);
+    @Update("UPDATE \"usuario\" SET \"estatus\" = CAST(CAST(#{nuevoEstatus} AS int) AS bit), \"tempoActualizacion\" = #{tiempoActualizacion} WHERE \"idUsuario\" = #{idUsuario}")
+    Integer actualizarEstatus(@Param("idUsuario") Integer idUsuario, @Param("nuevoEstatus") Boolean nuevoEstatus, @Param("tiempoActualizacion") LocalDateTime tiempoActualizacion);
     
     @Update("UPDATE \"usuario\" SET \"idRol\" = #{idRol}, \"idTipoUsuario\" = #{idTipoUsuario}, \"nombre\" = #{nombre}, \"apellidoPaterno\" = #{apellidoPaterno}, \"apellidoMaterno\" = #{apellidoMaterno}, \"email\" = #{email}, \"telefono\" = #{telefono}, \"idProgramaEducativo\" = #{idProgramaEducativo}, \"tempoActualizacion\" = #{tiempoActualizacion} WHERE \"idUsuario\" = #{idUsuario}")
     Integer editarUsuario(Usuario usuario);
