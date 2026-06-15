@@ -104,12 +104,24 @@ public class VehiculoService {
         throw new RuntimeException("Falta la placa del vehículo.");
     }
 
+    if (!solicitud.getPlaca().matches("^[A-Z0-9-]+$")) {
+        throw new RuntimeException("La placa contiene caracteres inválidos. Usa solo mayúsculas, números y guiones.");
+    }
+
     if (solicitud.getColor() == null || solicitud.getColor().isEmpty()) {
         throw new RuntimeException("Falta el color del vehículo.");
     }
 
+    if (!solicitud.getColor().matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+        throw new RuntimeException("El color del vehículo solo puede contener letras.");
+    }
+
     if (solicitud.getAnio() == null) {
         throw new RuntimeException("Falta el año del vehículo.");
+    }
+
+    if (solicitud.getAnio() < 1900 || solicitud.getAnio() > 2100) {
+        throw new RuntimeException("El año del vehículo no es lógico o válido.");
     }
 
     if (solicitud.getPlaca().length() > 7) {
@@ -190,12 +202,24 @@ public class VehiculoService {
         throw new RuntimeException("Falta la placa del vehículo.");
     }
 
+    if (!solicitud.getPlaca().matches("^[A-Z0-9-]+$")) {
+        throw new RuntimeException("La placa contiene caracteres inválidos. Usa solo mayúsculas, números y guiones.");
+    }
+
     if (solicitud.getColor() == null || solicitud.getColor().isEmpty()) {
         throw new RuntimeException("Falta el color del vehículo.");
     }
 
+    if (!solicitud.getColor().matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+        throw new RuntimeException("El color del vehículo solo puede contener letras.");
+    }
+
     if (solicitud.getAnio() == null) {
         throw new RuntimeException("Falta el año del vehículo.");
+    }
+
+    if (solicitud.getAnio() < 1900 || solicitud.getAnio() > 2100) {
+        throw new RuntimeException("El año del vehículo no es lógico o válido.");
     }
 
     if (solicitud.getPlaca().length() > 7) {
