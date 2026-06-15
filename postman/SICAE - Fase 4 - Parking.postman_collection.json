@@ -17,7 +17,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idUsuario\":\"3\",\r\n  \"username\": \"admin1\",\r\n  \"password\": \"contra1\"\r\n}\r\n",
+          "raw": "{\r\n  \"username\": \"admin1\",\r\n  \"password\": \"contra1\"\r\n}\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -47,7 +47,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "{{auth_secret_1akt}}",
+              "value": "{{auth_secret_1byu}}",
               "type": "string"
             }
           ]
@@ -56,7 +56,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idUsuario\": 3,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABC4321\",\r\n  \"color\": \"Verde\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"Vehiculo de prueba\"\r\n}\r\n",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABCD234\",\r\n  \"color\": \"Rojo\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"Vehiculo de prueba\"\r\n}\r\n\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -86,7 +86,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "{{auth_secret_1akt}}",
+              "value": "{{supabase_service_role_api_key_1byu}}",
               "type": "string"
             }
           ]
@@ -95,7 +95,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"placa\": \"ABC4455\"\r\n}\r\n",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"placa\": \"ABCD234\"\r\n}\r\n",
           "options": {
             "raw": {
               "language": "json"
@@ -118,14 +118,14 @@
       "response": []
     },
     {
-      "name": "http://localhost:8085/parking/salida/ABC555B",
+      "name": "http://localhost:8085/parking/salida/ABC1234",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "{{json_web_token_1akt}}",
+              "value": "{{supabase_service_role_api_key_1byu}}",
               "type": "string"
             }
           ]
@@ -142,7 +142,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8085/parking/salida/ABC4455",
+          "raw": "http://localhost:8085/parking/salida/ABCD234",
           "protocol": "http",
           "host": [
             "localhost"
@@ -151,7 +151,76 @@
           "path": [
             "parking",
             "salida",
-            "ABC4455"
+            "ABCD234"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8085/parking/espacios",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0bjc}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8085/parking/espacios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "espacios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8082/usuarios/agregar",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0j5m}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
           ]
         }
       },
@@ -165,6 +234,22 @@
     },
     {
       "key": "json_web_token_1akt",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0bjc",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0j5m",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_1byu",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_1byu",
       "secret": true
     }
   ]
