@@ -72,3 +72,4 @@ volumes:
 networks:
     sicae-network:
         driver: bridge
+
