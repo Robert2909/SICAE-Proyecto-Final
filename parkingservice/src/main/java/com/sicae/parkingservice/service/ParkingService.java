@@ -1,10 +1,12 @@
 package com.sicae.parkingservice.service;
 
+import com.sicae.parkingservice.dto.ParkingResponseDTO;
 import com.sicae.parkingservice.repository.Configuracion;
 import com.sicae.parkingservice.repository.ParkingRepository;
 import com.sicae.parkingservice.repository.Ticket;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -21,26 +23,25 @@ public class ParkingService {
 
     // Método principal para registrar la entrada de un vehículo
     // Recibe el token JWT para poder pasárselo a UserService y VehicleService
-    public String registrarEntrada(Integer idUsuario, String placa, String token) {
+    public ParkingResponseDTO registrarEntrada(Integer idUsuario, String placa, String token) {
         
         // 1. Validar disponibilidad de cajones en el estacionamiento
-        Configuracion config = parkingRepository.obtenerConfiguracion();
-        Integer espaciosOcupados = parkingRepository.contarEspaciosOcupados();
+        Integer idEspacio = parkingRepository.obtenerEspacioDisponible();
         
-        if (espaciosOcupados >= config.getCapacidadTotal()) {
-            return "Error: Estacionamiento lleno. No hay cajones disponibles.";
+        if (idEspacio == null) {
+            throw new RuntimeException("Estacionamiento lleno. No hay cajones disponibles.");
         }
 
         // 2. Validar regla de negocio: Máximo dos vehículos adentro por usuario
         Integer vehiculosAdentro = parkingRepository.contarVehiculosAdentroPorUsuario(idUsuario);
         if (vehiculosAdentro >= 2) {
-            return "Error: El usuario ya tiene el máximo permitido de 2 vehículos adentro.";
+            throw new RuntimeException("El usuario ya tiene el máximo permitido de 2 vehículos adentro.");
         }
 
         // 3. Validar que la placa no esté ya registrada como "Adentro" (evitar doble entrada)
         Ticket ticketExistente = parkingRepository.buscarTicketAbiertoPorPlaca(placa);
         if (ticketExistente != null) {
-            return "Error: El vehículo con placa " + placa + " ya se encuentra adentro del estacionamiento.";
+            throw new RuntimeException("El vehículo con placa " + placa + " ya se encuentra adentro del estacionamiento.");
         }
 
         // 4. Integración con otros Microservicios usando RestTemplate
@@ -59,7 +60,7 @@ public class ParkingService {
             // Si el usuario no existe, está inactivo o el token es inválido, esto lanzará una excepción
             restTemplate.exchange(urlUsuario, HttpMethod.GET, entity, Map.class);
         } catch (Exception e) {
-            return "Error de Integración: El usuario no existe, está inactivo o el token expiró.";
+            throw new RuntimeException("Error de Integración: El usuario no existe, está inactivo o el token expiró.");
         }
 
         // B. Consultar al VehicleService (Puerto 8083)
@@ -68,27 +69,37 @@ public class ParkingService {
             String urlVehiculo = "http://host.docker.internal:8083/vehiculos/validar?idUsuario=" + idUsuario + "&placa=" + placa;
             restTemplate.exchange(urlVehiculo, HttpMethod.GET, entity, Map.class);
         } catch (Exception e) {
-            return "Error de Integración: El vehículo no existe, no le pertenece al usuario o está inactivo.";
+            throw new RuntimeException("Error de Integración: El vehículo no existe, no le pertenece al usuario o está inactivo.");
         }
 
         // 5. Si pasamos todas las validaciones (locales y externas), insertamos el ticket
+        Configuracion config = parkingRepository.obtenerConfiguracion();
         Ticket nuevoTicket = new Ticket();
         nuevoTicket.setIdUsuario(idUsuario);
         nuevoTicket.setPlaca(placa);
         nuevoTicket.setHoraEntrada(LocalDateTime.now());
+        nuevoTicket.setIdEspacio(idEspacio);
+        nuevoTicket.setTarifaHora(config.getCostoHora());
         
         parkingRepository.registrarEntrada(nuevoTicket);
+        parkingRepository.ocuparEspacio(idEspacio);
         
-        return "Éxito: Entrada registrada para la placa " + placa + ". Espacios restantes: " + (config.getCapacidadTotal() - (espaciosOcupados + 1));
+        ParkingResponseDTO response = new ParkingResponseDTO();
+        response.setIdMovimiento(nuevoTicket.getIdTicket());
+        response.setTiempoEntrada(nuevoTicket.getHoraEntrada());
+        response.setEspacioAsignado(nuevoTicket.getIdEspacio());
+        response.setTarifaHora(nuevoTicket.getTarifaHora());
+
+        return response;
     }
 
     // Método principal para registrar la salida y calcular el cobro
-    public String registrarSalida(String placa) {
+    public ParkingResponseDTO registrarSalida(String placa) {
         
         // 1. Buscamos el ticket que siga abierto (estatus = 1) para esta placa
         Ticket ticket = parkingRepository.buscarTicketAbiertoPorPlaca(placa);
         if (ticket == null) {
-            return "Error: No se encontró ningún vehículo adentro con la placa " + placa;
+            throw new RuntimeException("No se encontró ningún vehículo adentro con la placa " + placa);
         }
 
         // 2. Calculamos el tiempo total que estuvo adentro usando la clase Duration de Java
@@ -107,8 +118,24 @@ public class ParkingService {
         ticket.setHoraSalida(horaSalida);
         ticket.setTiempoTotalMinutos((int) minutosTotales);
         ticket.setCostoTotal(costoTotal);
-        parkingRepository.registrarSalida(ticket);
+        ticket.setHorasCobradas((int) horasCobradas);
 
-        return "Éxito: Salida registrada. Tiempo cobrado: " + horasCobradas + " hrs " + minutosCobrados + " mins. Total a pagar: $" + costoTotal;
+        parkingRepository.registrarSalida(ticket);
+        parkingRepository.liberarEspacio(ticket.getIdEspacio());
+
+        ParkingResponseDTO response = new ParkingResponseDTO();
+        response.setIdMovimiento(ticket.getIdTicket());
+        response.setTiempoEntrada(ticket.getHoraEntrada());
+        response.setTiempoSalida(ticket.getHoraSalida());
+        response.setEspacioAsignado(ticket.getIdEspacio());
+        response.setTarifaHora(ticket.getTarifaHora());
+        response.setCostoTotal(ticket.getCostoTotal());
+        response.setHorasCobradas(ticket.getHorasCobradas());
+
+        return response;
+    }
+
+    public List<Integer> consultarEspacios() {
+        return parkingRepository.consultarEspaciosDisponibles();
     }
 }

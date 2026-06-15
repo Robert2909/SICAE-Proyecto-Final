@@ -4,8 +4,10 @@
  */
 package com.sicae.parkingservice.repository;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,8 +22,19 @@ public interface ParkingRepository {
     @Select("SELECT * FROM configuracion WHERE idConfiguracion = 1")
     Configuracion obtenerConfiguracion();
 
-    @Select("SELECT COUNT(*) FROM ticket WHERE estatus = b'1'")
-    Integer contarEspaciosOcupados();
+    // Busca el primer espacio disponible (ocupado = 0)
+    @Select("SELECT idEspacio FROM cajon WHERE ocupado = b'0' LIMIT 1")
+    Integer obtenerEspacioDisponible();
+
+    // Devuelve una lista con todos los espacios disponibles
+    @Select("SELECT idEspacio FROM cajon WHERE ocupado = b'0'")
+    List<Integer> consultarEspaciosDisponibles();
+
+    @Update("UPDATE cajon SET ocupado = b'1' WHERE idEspacio = #{idEspacio}")
+    void ocuparEspacio(@Param("idEspacio") Integer idEspacio);
+
+    @Update("UPDATE cajon SET ocupado = b'0' WHERE idEspacio = #{idEspacio}")
+    void liberarEspacio(@Param("idEspacio") Integer idEspacio);
 
     @Select("SELECT COUNT(*) FROM ticket WHERE idUsuario = #{idUsuario} AND estatus = b'1'")
     Integer contarVehiculosAdentroPorUsuario(@Param("idUsuario") Integer idUsuario);
@@ -29,10 +42,11 @@ public interface ParkingRepository {
     @Select("SELECT * FROM ticket WHERE placa = #{placa} AND estatus = b'1'")
     Ticket buscarTicketAbiertoPorPlaca(@Param("placa") String placa);
 
-    @Insert("INSERT INTO ticket (idUsuario, placa, horaEntrada) VALUES (#{idUsuario}, #{placa}, #{horaEntrada})")
+    @Insert("INSERT INTO ticket (idUsuario, placa, horaEntrada, idEspacio, tarifaHora) VALUES (#{idUsuario}, #{placa}, #{horaEntrada}, #{idEspacio}, #{tarifaHora})")
+    @Options(useGeneratedKeys = true, keyProperty = "idTicket", keyColumn = "idTicket")
     void registrarEntrada(Ticket ticket);
 
     @Update("UPDATE ticket SET horaSalida = #{horaSalida}, tiempoTotalMinutos = #{tiempoTotalMinutos}, " +
-            "costoTotal = #{costoTotal}, estatus = b'0' WHERE idTicket = #{idTicket}")
+            "costoTotal = #{costoTotal}, horasCobradas = #{horasCobradas}, estatus = b'0' WHERE idTicket = #{idTicket}")
     void registrarSalida(Ticket ticket);
 }

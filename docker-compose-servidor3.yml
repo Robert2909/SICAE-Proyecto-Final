@@ -1,0 +1,45 @@
+# Este archivo se encarga de levantar el servidor 3 del proyecto
+# Aquí van juntos la base de datos de estacionamiento y el microservicio ParkingService
+services:
+
+  # Base de datos MySQL independiente para el dominio de estacionamiento
+  mysql-parking:
+    image: mysql:8.0
+    container_name: db_parking
+    environment:
+      MYSQL_ROOT_PASSWORD: Delfines1
+      MYSQL_DATABASE: sicaeparking
+    ports:
+      # Usamos el 3308 para que no choque con el 3306 (local) ni el 3307 (vehículos)
+      - "3308:3306"
+    volumes:
+      - mysqldata_parking:/var/lib/mysql
+      - ./BD/MySQL/sicaeparking.sql:/docker-entrypoint-initdb.d/sicaeparking.sql
+    networks:
+      - sicae-network-parking
+
+  # Microservicio de estacionamiento (Fase 4)
+  parking-service:
+    build:
+      context: ./parkingservice
+      dockerfile: Dockerfile
+    container_name: parking_service
+    ports:
+      # Conectamos el puerto 8085 externo al 8085 interno de la app Spring Boot
+      - "8085:8085"
+    depends_on:
+      - mysql-parking
+    restart: on-failure
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-parking:3306/sicaeparking
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Delfines1
+    networks:
+      - sicae-network-parking
+
+volumes:
+  mysqldata_parking:
+
+networks:
+  sicae-network-parking:
+    driver: bridge

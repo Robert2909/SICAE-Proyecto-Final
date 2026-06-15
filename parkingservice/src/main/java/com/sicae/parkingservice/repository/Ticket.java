@@ -18,6 +18,9 @@ public class Ticket {
     private LocalDateTime horaEntrada;
     private LocalDateTime horaSalida;
     private Integer tiempoTotalMinutos;
+    private Integer idEspacio;
+    private Double tarifaHora;
+    private Integer horasCobradas;
     private Double costoTotal;
     private Boolean estatus; 
 
@@ -39,6 +42,15 @@ public class Ticket {
 
     public Integer getTiempoTotalMinutos() { return tiempoTotalMinutos; }
     public void setTiempoTotalMinutos(Integer tiempoTotalMinutos) { this.tiempoTotalMinutos = tiempoTotalMinutos; }
+
+    public Integer getIdEspacio() { return idEspacio; }
+    public void setIdEspacio(Integer idEspacio) { this.idEspacio = idEspacio; }
+
+    public Double getTarifaHora() { return tarifaHora; }
+    public void setTarifaHora(Double tarifaHora) { this.tarifaHora = tarifaHora; }
+
+    public Integer getHorasCobradas() { return horasCobradas; }
+    public void setHorasCobradas(Integer horasCobradas) { this.horasCobradas = horasCobradas; }
 
     public Double getCostoTotal() { return costoTotal; }
     public void setCostoTotal(Double costoTotal) { this.costoTotal = costoTotal; }

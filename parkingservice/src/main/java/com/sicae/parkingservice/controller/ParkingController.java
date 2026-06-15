@@ -1,7 +1,9 @@
 package com.sicae.parkingservice.controller;
 
 import com.sicae.parkingservice.dto.ParkingRequestDTO;
+import com.sicae.parkingservice.dto.ParkingResponseDTO;
 import com.sicae.parkingservice.service.ParkingService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,12 +38,7 @@ public class ParkingController {
             String tokenPuro = authHeader.substring(7);
 
             // Llamamos a ParkingService para la lógica de negocio y la integración
-            String resultado = parkingService.registrarEntrada(solicitud.getIdUsuario(), solicitud.getPlaca(), authHeader);
-
-            // En nuestro servicio controlamos los errores regresando un String que empieza con "Error:"
-            if (resultado.startsWith("Error:")) {
-                return ResponseEntity.badRequest().body(resultado);
-            }
+            ParkingResponseDTO resultado = parkingService.registrarEntrada(solicitud.getIdUsuario(), solicitud.getPlaca(), authHeader);
 
             // Si todo sale bien, regresamos el mensaje de éxito
             return ResponseEntity.ok(resultado);
@@ -63,14 +60,24 @@ public class ParkingController {
             }
 
             // Llamamos al servicio para sacar al vehículo y calcular cuánto debe
-            String resultado = parkingService.registrarSalida(placa);
-
-            if (resultado.startsWith("Error:")) {
-                return ResponseEntity.badRequest().body(resultado);
-            }
+            ParkingResponseDTO resultado = parkingService.registrarSalida(placa);
 
             return ResponseEntity.ok(resultado);
 
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("No pudo completarse: " + e.getMessage());
+        }
+    }
+
+    // Tercer endpoint: Consultar los espacios disponibles
+    @GetMapping("/espacios")
+    public ResponseEntity<?> consultarEspacios(@RequestHeader("Authorization") final String authHeader) {
+        try {
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falta el token de autorización o el formato es incorrecto");
+            }
+            List<Integer> espaciosDisponibles = parkingService.consultarEspacios();
+            return ResponseEntity.ok(espaciosDisponibles);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("No pudo completarse: " + e.getMessage());
         }
