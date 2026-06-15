@@ -1,0 +1,171 @@
+{
+  "info": {
+    "_postman_id": "4c8f5445-c58c-4db7-a27a-dad684dc6e53",
+    "name": "SICAE - Fase 4 - Parking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54260993",
+    "_collection_link": "https://go.postman.co/collection/54260993-4c8f5445-c58c-4db7-a27a-dad684dc6e53?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8081/auth/login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\":\"3\",\r\n  \"username\": \"admin1\",\r\n  \"password\": \"contra1\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8083/vehiculos/agregar",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_1akt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 3,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABC4321\",\r\n  \"color\": \"Verde\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"Vehiculo de prueba\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/vehiculos/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "vehiculos",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8085/parking/entrada",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_1akt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"placa\": \"ABC4455\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8085/parking/salida/ABC555B",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_1akt}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/salida/ABC4455",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "salida",
+            "ABC4455"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_secret_1akt",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_1akt",
+      "secret": true
+    }
+  ]
+}
