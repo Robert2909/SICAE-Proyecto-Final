@@ -8,6 +8,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,13 +21,30 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ParkingService {
 
+    // Llave secreta del equipo para validar tokens (La misma de AuthService)
+    private static final String SECRET_KEY_STRING = "LlaveSuperSecretaParangaricutirimicuaro";
+    private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
+
     @Autowired
     private ParkingRepository parkingRepository;
 
+    // Método para verificar matemáticamente que el token es auténtico y no ha expirado
+    public boolean validarToken(String token) {
+        try {
+            Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     // Método principal para registrar la entrada de un vehículo
-    // Recibe el token JWT para poder pasárselo a UserService y VehicleService
-    public ParkingResponseDTO registrarEntrada(Integer idUsuario, String placa, String token) {
+    public ParkingResponseDTO registrarEntrada(Integer idUsuario, String placa, String tokenPuro) {
         
+        if (!validarToken(tokenPuro)) {
+            throw new RuntimeException("El token es inválido o ya expiró.");
+        }
+
         // 1. Validar disponibilidad de cajones en el estacionamiento
         Integer idEspacio = parkingRepository.obtenerEspacioDisponible();
         
@@ -50,7 +70,7 @@ public class ParkingService {
         
         // Preparamos los Headers inyectando el Token JWT que recibimos del cliente (Postman)
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", token);
+        headers.set("Authorization", "Bearer " + tokenPuro);
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         // A. Consultar al UserService (Puerto 8082)
@@ -94,8 +114,12 @@ public class ParkingService {
     }
 
     // Método principal para registrar la salida y calcular el cobro
-    public ParkingResponseDTO registrarSalida(String placa) {
+    public ParkingResponseDTO registrarSalida(String placa, String tokenPuro) {
         
+        if (!validarToken(tokenPuro)) {
+            throw new RuntimeException("El token es inválido o ya expiró.");
+        }
+
         // 1. Buscamos el ticket que siga abierto (estatus = 1) para esta placa
         Ticket ticket = parkingRepository.buscarTicketAbiertoPorPlaca(placa);
         if (ticket == null) {
@@ -135,7 +159,10 @@ public class ParkingService {
         return response;
     }
 
-    public List<Integer> consultarEspacios() {
+    public List<Integer> consultarEspacios(String tokenPuro) {
+        if (!validarToken(tokenPuro)) {
+            throw new RuntimeException("El token es inválido o ya expiró.");
+        }
         return parkingRepository.consultarEspaciosDisponibles();
     }
 }

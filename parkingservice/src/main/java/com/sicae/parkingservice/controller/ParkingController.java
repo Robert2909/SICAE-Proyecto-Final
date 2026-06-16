@@ -38,7 +38,7 @@ public class ParkingController {
             String tokenPuro = authHeader.substring(7);
 
             // Llamamos a ParkingService para la lógica de negocio y la integración
-            ParkingResponseDTO resultado = parkingService.registrarEntrada(solicitud.getIdUsuario(), solicitud.getPlaca(), authHeader);
+            ParkingResponseDTO resultado = parkingService.registrarEntrada(solicitud.getIdUsuario(), solicitud.getPlaca(), tokenPuro);
 
             // Si todo sale bien, regresamos el mensaje de éxito
             return ResponseEntity.ok(resultado);
@@ -59,8 +59,10 @@ public class ParkingController {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falta el token de autorización o el formato es incorrecto");
             }
 
+            String tokenPuro = authHeader.substring(7);
+
             // Llamamos al servicio para sacar al vehículo y calcular cuánto debe
-            ParkingResponseDTO resultado = parkingService.registrarSalida(placa);
+            ParkingResponseDTO resultado = parkingService.registrarSalida(placa, tokenPuro);
 
             return ResponseEntity.ok(resultado);
 
@@ -76,7 +78,10 @@ public class ParkingController {
             if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falta el token de autorización o el formato es incorrecto");
             }
-            List<Integer> espaciosDisponibles = parkingService.consultarEspacios();
+            
+            String tokenPuro = authHeader.substring(7);
+            List<Integer> espaciosDisponibles = parkingService.consultarEspacios(tokenPuro);
+            
             return ResponseEntity.ok(espaciosDisponibles);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("No pudo completarse: " + e.getMessage());
