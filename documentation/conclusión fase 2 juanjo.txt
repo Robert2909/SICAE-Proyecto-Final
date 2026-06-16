@@ -1,0 +1,8 @@
+Hecho:
+- se creo con éxito el micro servicio de usuarios
+- esta posicionado en el puerto 8082
+- para cada peticion deben autenticarse en authservices, les dará un token y ese lo van a poner en postman donde dice Autorizacion (o una mamada asi) ahí les aparecerá la opción de auth type, le dan en Bearer y al ladito le pegan el token. 
+- todas mis clases están documentadas, si quieren pueden utilizar mis métodos para que no se rompan la polla como yo, solo modifiquenlos a sus datos. 
+- el micro servicio auth y el user ya están en un mismo contendor. Pueden levantarlo en sus máquinas para hacer las peticiones más fácil PERO NO LE MUEVAN A NADA DE LA CARPETA QUE TENGA QUE VER CON AUTH Y USER SERVICE
+- es muy probable que al ingresar in osario o algo les de un error por la pk. Solo tiene que buscar "como reestablecer la secuencia de pk en una tabla" Y ya lo ejecutan y ya los deja
+- la estructura va asi:la petición va de postman a controller, de controller a service y de service a repository, para que tengan una idea de cómo hacer lo suyo. Repito, pueden usar de base mi microservicio. Solo lo importan en su netbeans, lo copian completo, lo pegan y modifican todo lo que tengan que hacer. Por qué? Porque el mio y el de Robert ya traen toda la configuración de springboot y esas cosas. Así que ya se ahorran configurar y descargar de más
