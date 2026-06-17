@@ -16,7 +16,7 @@ CREATE TABLE `configuracion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- después la configuración inicial.
-INSERT INTO `configuracion` (`capacidadTotal`, `costoHora`, `costoMinuto`) VALUES (50, 15.00, 0.25);
+INSERT INTO `configuracion` (`capacidadTotal`, `costoHora`, `costoMinuto`) VALUES (4, 15.00, 0.25);
 
 -- se representan los lugares disponibles con la tabla cajon.
 CREATE TABLE `cajon` (
@@ -27,11 +27,7 @@ CREATE TABLE `cajon` (
 
 -- Metemos los 50 cajones (desocupados)
 INSERT INTO `cajon` (`ocupado`) VALUES
-(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),
-(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),
-(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),
-(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),
-(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0'),(b'0');
+(b'0'),(b'0'),(b'0'),(b'0');
 
 -- esta es la tabla principal en la que se registran los tickets
 CREATE TABLE `ticket` (

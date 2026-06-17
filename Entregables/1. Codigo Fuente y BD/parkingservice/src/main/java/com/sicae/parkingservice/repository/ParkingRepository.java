@@ -42,7 +42,7 @@ public interface ParkingRepository {
     @Select("SELECT * FROM ticket WHERE placa = #{placa} AND estatus = b'1'")
     Ticket buscarTicketAbiertoPorPlaca(@Param("placa") String placa);
 
-    @Insert("INSERT INTO ticket (idUsuario, placa, horaEntrada, idEspacio, tarifaHora) VALUES (#{idUsuario}, #{placa}, #{horaEntrada}, #{idEspacio}, #{tarifaHora})")
+    @Insert("INSERT INTO ticket (idUsuario, placa, horaEntrada, idEspacio, tarifaHora, estatus) VALUES (#{idUsuario}, #{placa}, #{horaEntrada}, #{idEspacio}, #{tarifaHora}, b'1')")
     @Options(useGeneratedKeys = true, keyProperty = "idTicket", keyColumn = "idTicket")
     void registrarEntrada(Ticket ticket);
 
