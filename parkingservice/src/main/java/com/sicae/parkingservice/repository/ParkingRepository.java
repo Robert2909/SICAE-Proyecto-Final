@@ -22,11 +22,11 @@ public interface ParkingRepository {
     @Select("SELECT * FROM configuracion WHERE idConfiguracion = 1")
     Configuracion obtenerConfiguracion();
 
-    // Busca el primer espacio disponible (ocupado = 0)
+    // buscamos el primer espacio disponible
     @Select("SELECT idEspacio FROM cajon WHERE ocupado = b'0' LIMIT 1")
     Integer obtenerEspacioDisponible();
 
-    // Devuelve una lista con todos los espacios disponibles
+    // y después devolvemos una lista con todos los lugares disponibles
     @Select("SELECT idEspacio FROM cajon WHERE ocupado = b'0'")
     List<Integer> consultarEspaciosDisponibles();
 

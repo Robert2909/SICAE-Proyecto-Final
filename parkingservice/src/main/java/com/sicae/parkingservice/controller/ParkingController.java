@@ -9,16 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-// @RestController indica que este archivo es un controlador REST
 @RestController
-// @RequestMapping indica que todas las rutas empezaran con /parking
 @RequestMapping("/parking")
 public class ParkingController {
 
     @Autowired
     private ParkingService parkingService;
 
-    // Endpoint de prueba 
     @GetMapping("/prueba")
     public String probarParkingService() {
         return "probando el ParkingService 8084";
@@ -49,19 +46,18 @@ public class ParkingController {
         }
     }
 
-    // Segundo endpoint: Registrar la salida y cobrar
-    // Como solo necesitamos la placa, la pedimos directamente en la URL con @PathVariable
+    // Segundo endpoint se registra la salida de un vehiculo y el costo total
     @PostMapping("/salida/{placa}")
     public ResponseEntity<?> registrarSalida(@RequestHeader("Authorization") final String authHeader, @PathVariable String placa) {
         try {
-            // Verificamos el token (aunque el proceso es local, mantenemos la capa de seguridad)
+            // después verificamos el token de forma local pero segura
             if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falta el token de autorización o el formato es incorrecto");
             }
 
             String tokenPuro = authHeader.substring(7);
 
-            // Llamamos al servicio para sacar al vehículo y calcular cuánto debe
+            // mandamos a llamar el servicio para registrar la salida y cuanto debe
             ParkingResponseDTO resultado = parkingService.registrarSalida(placa, tokenPuro);
 
             return ResponseEntity.ok(resultado);
@@ -71,7 +67,7 @@ public class ParkingController {
         }
     }
 
-    // Tercer endpoint: Consultar los espacios disponibles
+    // tercer endpont de lugares disponibles
     @GetMapping("/espacios")
     public ResponseEntity<?> consultarEspacios(@RequestHeader("Authorization") final String authHeader) {
         try {
