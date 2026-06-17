@@ -154,7 +154,7 @@ public class UsuarioService {
         
         //aqui verificamos si el id proporcionado corresponde a uno que tengamos en nuestra tabla de roles
         if (usuarioRepository.findByidrol(nuevoUsuario.getIdRol()) == 0) {
-            throw new RuntimeException("El id del rol que ingresaste no se encuentra esta asignado a ningun rol");
+            throw new RuntimeException("El id del rol que ingresaste no esta asignado a ningun rol");
         }
         
         //aqui verificamos si el id proporcionado está asignado a un tipo de usuario en la BD
@@ -447,7 +447,7 @@ public class UsuarioService {
 
         // Lo mismo para los roles. 
         if (usuarioRepository.findByidrol(usuarioEditado.getIdRol()) == 0) {
-            throw new RuntimeException("El id del rol que ingresaste no se encuentra esta asignado a ningun rol");
+            throw new RuntimeException("El id del rol que ingresaste no esta asignado a ningun rol");
         }
 
         // Y lo mismo para el tipo de usuario.
