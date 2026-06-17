@@ -1,0 +1,75 @@
+version: '3.8'
+
+# Este archivo se encarga de ejecutar la base de datos y los microservicios de manera conjunta utilizando un solo comando
+services:
+
+    # Base de datos PostgreSQL
+    postgres-usuarios:
+        # Se utiliza una versión oficial de Postgres que está optimizada para ser ligera
+        image: postgres:15-alpine
+        # Se define el nombre exacto que tendrá el contenedor para poder identificarlo fácilmente
+        container_name: db_usuarios
+        environment:
+            # En esta parte se configuran las credenciales de acceso para la base de datos
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: admin # Esta contraseña es de prueba y se puede cambiar si es necesario
+            POSTGRES_DB: sicaeUsuario # Este es el nombre de la base de datos que se va a crear al inicio
+        ports:
+            # Se vincula el puerto 5432 del equipo local con el puerto 5432 del contenedor para permitir la conexión externa
+            - "5432:5432"
+        volumes:
+            # Se configura un volumen persistente para evitar que los datos de los usuarios se eliminen al apagar el contenedor
+            - pgdata:/var/lib/postgresql/data
+            - ./BD/PosgreSQL:/docker-entrypoint-initdb.d
+        networks:
+            # Se asigna la base de datos a esta red virtual para que los demás microservicios puedan comunicarse con ella
+            - sicae-network
+
+    # AuthService
+    auth-service:
+        build:
+            # Se le indica a Docker la ubicación del archivo Dockerfile que debe utilizar para construir la imagen del servicio
+            context: ./authservice
+            dockerfile: Dockerfile
+        container_name: auth_service
+        ports:
+            # Se vincula el puerto 8081 del equipo local con el puerto 8081 del contenedor de este servicio
+            - "8081:8081"
+        depends_on:
+            # Se establece una dependencia para asegurar que la base de datos inicie por completo antes de arrancar este servicio
+            - postgres-usuarios
+        networks:
+            # Se asigna este servicio a la misma red virtual de la base de datos para establecer la comunicación interna
+            - sicae-network
+        environment:
+            # En esta parte se sobrescriben las variables de entorno de Java para que apunten a la base de datos en el contenedor y no al entorno local
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-usuarios:5432/sicaeUsuario
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=admin
+    # UserService
+    # Este servicio se encuentra comentado de momento debido a que aún no ha sido desarrollado, ese le toca a Juanjo
+    user-service:
+        build:
+            context: ./userservice
+            dockerfile: Dockerfile
+        container_name: user_service
+        ports:
+            - "8082:8082"
+        depends_on:
+            - postgres-usuarios
+        networks:
+            - sicae-network
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-usuarios:5432/sicaeUsuario
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=admin
+
+    # En esta parte se definen los volúmenes que se utilizarán para la persistencia de datos
+volumes:
+    pgdata:
+
+        # En esta parte se define la red virtual interna en la que se conectarán los contenedores
+networks:
+    sicae-network:
+        driver: bridge
+

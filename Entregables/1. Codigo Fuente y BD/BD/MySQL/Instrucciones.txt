@@ -1,0 +1,7 @@
+################BASE DE DATOS PARA VEHICULO #####################
+1 Primero deberá crear la base de datos sicaevehiculo en MySQL
+2 Ejecutar el script sicaevehiculo.sql
+
+################BASE DE DATOS PARA ESTACIONAMIENTO #####################
+1 Primero deberá crear la base de datos sicaeEstacionamiento en MySQL
+2 Ejecutar el script sicaeestacionamiento.sql

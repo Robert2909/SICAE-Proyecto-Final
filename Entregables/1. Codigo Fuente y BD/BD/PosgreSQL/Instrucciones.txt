@@ -1,0 +1,3 @@
+################BASE DE DATOS PARA USUARIO #####################
+1 Primero deberá crear la base de datos sicaeUsuario en PostgreSQL
+2 Ejecutar el script sicaeUsuario.sql

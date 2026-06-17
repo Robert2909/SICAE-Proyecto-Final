@@ -1,0 +1,74 @@
+# Este archivo se encarga de levantar el servidor 2 del proyecto
+# Aquí van juntos la base de datos de vehículos y el microservicio VehicleService
+services:
+
+  # Base de datos MySQL para el dominio de vehículos
+  mysql-vehiculos:
+    # Se utiliza una imagen oficial de MySQL versión 8
+    image: mysql:8.0
+
+    # Este es el nombre que tendrá el contenedor para identificarlo fácil en Docker
+    container_name: db_vehiculos
+
+    environment:
+      # Contraseña del usuario root de MySQL
+      MYSQL_ROOT_PASSWORD: Delfines1
+
+      # Nombre de la base de datos que se va a crear al iniciar el contenedor
+      MYSQL_DATABASE: sicaevehiculo
+
+    ports:
+      # Se conecta el puerto 3307 de mi computadora con el puerto 3306 del contenedor
+      # Usamos 3307 afuera porque el 3306 normalmente ya lo ocupa mysql local
+      - "3307:3306"
+
+    volumes:
+      # Este volumen guarda los datos de MySQL para que no se borren al apagar el contenedor
+      - mysqldata_vehiculos:/var/lib/mysql
+
+      # Aquí se carga el script SQL de vehículos al iniciar la base por primera vez
+      - ./BD/MySQL/sicaevehiculo.sql:/docker-entrypoint-initdb.d/sicaevehiculo.sql
+
+    networks:
+      # Se conecta la base de datos a la red interna del servidor 2
+      - sicae-network-vehiculos
+
+  # Microservicio de vehículos
+  vehicle-service:
+    build:
+      # Se indica dónde está la carpeta del microservicio
+      context: ./vehicleservice
+
+      # Se indica qué dockerfile se va a usar para construir la imagen
+      dockerfile: Dockerfile
+
+    # Nombre del contenedor del microservicio
+    container_name: vehicle_service
+
+    ports:
+      # Se conecta el puerto 8083 de mi computadora con el puerto 8083 del contenedor
+      - "8083:8083"
+
+    depends_on:
+      # Esto hace que Docker primero levante la base de datos antes del microservicio
+      - mysql-vehiculos
+
+    environment:
+      # Aquí se configura la conexión del microservicio hacia mysql dentro de Docker
+      # No se usa localhost porque dentro de Docker el servicio debe llamar al nombre del contenedor de la base
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-vehiculos:3306/sicaevehiculo
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Delfines1
+
+    networks:
+      # Se conecta el microservicio a la misma red que la base para que puedan comunicarse
+      - sicae-network-vehiculos
+
+# Aquí se declaran los volúmenes que guardan datos persistentes
+volumes:
+  mysqldata_vehiculos:
+
+# Aquí se declara la red interna que usan los contenedores del servidor 2
+networks:
+  sicae-network-vehiculos:
+    driver: bridge
