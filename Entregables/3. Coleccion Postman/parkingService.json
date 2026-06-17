@@ -1,171 +1,21 @@
 {
   "info": {
-    "_postman_id": "4c8f5445-c58c-4db7-a27a-dad684dc6e53",
-    "name": "SICAE - Fase 4 - Parking",
+    "_postman_id": "6533586b-0c58-4bb9-bc48-55a94b9b251c",
+    "name": "SICAE coleccion fase 4",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54260993",
-    "_collection_link": "https://go.postman.co/collection/54260993-4c8f5445-c58c-4db7-a27a-dad684dc6e53?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/54260993-6533586b-0c58-4bb9-bc48-55a94b9b251c?source=collection_link"
   },
   "item": [
     {
-      "name": "http://localhost:8081/auth/login",
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"username\": \"admin1\",\r\n  \"password\": \"contra1\"\r\n}\r\n",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8081/auth/login",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8081",
-          "path": [
-            "auth",
-            "login"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "http://localhost:8083/vehiculos/agregar",
+      "name": "01 - Ver espacios Exitoso",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "{{auth_secret_1byu}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"idModelo\": 1,\r\n  \"placa\": \"ABCD234\",\r\n  \"color\": \"Rojo\",\r\n  \"anio\": 2020,\r\n  \"descripcion\": \"Vehiculo de prueba\"\r\n}\r\n\r\n",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8083/vehiculos/agregar",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8083",
-          "path": [
-            "vehiculos",
-            "agregar"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "http://localhost:8085/parking/entrada",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{supabase_service_role_api_key_1byu}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"idUsuario\": 2,\r\n  \"placa\": \"ABCD234\"\r\n}\r\n",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8085/parking/entrada",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8085",
-          "path": [
-            "parking",
-            "entrada"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "http://localhost:8085/parking/salida/ABC1234",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{supabase_service_role_api_key_1byu}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8085/parking/salida/ABCD234",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8085",
-          "path": [
-            "parking",
-            "salida",
-            "ABCD234"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "http://localhost:8085/parking/espacios",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{json_web_token_0bjc}}",
+              "value": "{{supabase_service_role_api_key_0fig}}",
               "type": "string"
             }
           ]
@@ -188,14 +38,14 @@
       "response": []
     },
     {
-      "name": "http://localhost:8082/usuarios/agregar",
+      "name": "02 - Registrar Entrada Exitosa",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "{{json_web_token_0j5m}}",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE3MDczNTQsImV4cCI6MTc4MTcxNDU1NH0.l0IHzM4fKiqbhnpwFgDPegzJYGKQi-D-Woyajq6DKak",
               "type": "string"
             }
           ]
@@ -204,7 +54,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n    \"idUsuario\": 2, \r\n    \"placa\": \"ABC1234\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -212,15 +62,311 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8082/usuarios/agregar",
+          "raw": "http://localhost:8085/parking/entrada",
           "protocol": "http",
           "host": [
             "localhost"
           ],
-          "port": "8082",
+          "port": "8085",
           "path": [
-            "usuarios",
-            "agregar"
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "03 - Registrar Salida Exitosa",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_05yb}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/salida/PLACA05",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "salida",
+            "PLACA05"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "04 - Ver espacios (error) token inválido o expirado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "TOKENFALSO",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8085/parking/espacios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "espacios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "05 - RegistrarE (error) placa ya está dentro del estacionamiento",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_0fig}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"idUsuario\": 4,\r\n    \"placa\": \"PLACA01\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "06 - RegistrarE (error) más de dos vehículos por usuario",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0fig}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"idUsuario\": 4,\r\n    \"placa\": \"PLACA03\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "07 - RegistrarE (error) token inválido o expirado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "TOKENINVALIDO",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"idUsuario\":\"2\",\r\n    \"placa\":\"ABC1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "08 - RegistrarE (error) auto ajeno o inactivo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_secret_0fig}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"idUsuario\": 2, \r\n    \"placa\": \"PLACA06\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "09 - RegistrarE (error) Estacionamiento lleno",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0fig}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"idUsuario\": 3,\r\n    \"placa\": \"PLACA07\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/parking/entrada",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "entrada"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10 - Salida (error) vehículo inexistente",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0fig}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8085/parking/salida/NOESTA1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "parking",
+            "salida",
+            "NOESTA1"
           ]
         }
       },
@@ -229,27 +375,23 @@
   ],
   "variable": [
     {
-      "key": "auth_secret_1akt",
+      "key": "supabase_service_role_api_key_05yb",
       "secret": true
     },
     {
-      "key": "json_web_token_1akt",
+      "key": "json_web_token_05yb",
       "secret": true
     },
     {
-      "key": "json_web_token_0bjc",
+      "key": "auth_secret_0fig",
       "secret": true
     },
     {
-      "key": "json_web_token_0j5m",
+      "key": "json_web_token_0fig",
       "secret": true
     },
     {
-      "key": "supabase_service_role_api_key_1byu",
-      "secret": true
-    },
-    {
-      "key": "auth_secret_1byu",
+      "key": "supabase_service_role_api_key_0fig",
       "secret": true
     }
   ]
