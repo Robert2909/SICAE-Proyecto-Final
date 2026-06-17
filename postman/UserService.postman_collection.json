@@ -15,7 +15,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -136,14 +136,14 @@
       "response": []
     },
     {
-      "name": "AgregarUsuarioSin-permisoAdmin",
+      "name": "AgregarUsuario-tokenExpirado",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODEzMjMwNzQsImV4cCI6MTc4MTMzMDI3NH0.QlBRR2JW9_Uple3UKR5tpB6ZtY8p2RRyvkc3f4gWfKI",
               "type": "string"
             }
           ]
@@ -181,14 +181,14 @@
       "response": []
     },
     {
-      "name": "UsuarioSin-id",
+      "name": "AgregarUsuarioSin-permisoAdmin",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -203,7 +203,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UsuarioSin-idRol",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -233,7 +278,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -248,52 +293,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 22,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:8082/usuarios/agregar",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8082",
-          "path": [
-            "usuarios",
-            "agregar"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Usuario-idtipousuariomal",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 22,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.idrolmal@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandradeidrolmal\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -323,7 +323,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -338,7 +338,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n \r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-idtipousuariomal",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.idtipomal@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johantipomal\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -368,7 +413,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -383,7 +428,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -413,7 +458,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -428,7 +473,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 11,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp1.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 99,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.programamal@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johanprogramamal\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -458,7 +503,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -473,7 +518,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-nombreLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.nombrelargo@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johannombrelargo\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -503,7 +593,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -518,7 +608,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-apellidoPLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.apellidoplargo@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johanapellidoplargo\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -548,7 +683,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -563,7 +698,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -593,7 +728,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -608,7 +743,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -638,7 +773,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -653,7 +788,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan-SINARROBA_j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan-SINARROBA_j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johancorreomal\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-correoLargo",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"correoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johancorreolargo\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -683,7 +863,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -698,7 +878,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade1\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johancorreousado\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -721,14 +901,14 @@
       "response": []
     },
     {
-      "name": "Usuariosin-telefono",
+      "name": "UsuarioSin-telefono",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -743,7 +923,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -766,14 +946,14 @@
       "response": []
     },
     {
-      "name": "Usuariosin-usuername",
+      "name": "Usuario-telefonoLargo",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -788,7 +968,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.telefonolargo@j2rp.com\",\r\n  \"telefono\": \"22812345678901\",\r\n  \"username\": \"johantelefonolargo\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -811,14 +991,14 @@
       "response": []
     },
     {
-      "name": "Usuariosin-usuarioUsado",
+      "name": "UsuarioSin-username",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -833,7 +1013,52 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.sinusername@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"password\":\"123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/agregar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "agregar"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Usuario-usernameUsado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.usernameusado@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\",\r\n  \"password\":\"123!\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -863,7 +1088,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -878,7 +1103,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"22812345671\",\r\n  \"username\": \"johandrade\"\r\n\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan@j2rp.com\",\r\n  \"telefono\": \"2281234567\",\r\n  \"username\": \"johandrade\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -908,7 +1133,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1032,6 +1257,52 @@
       "response": []
     },
     {
+      "name": "EditarUsuario-tokenExpirado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODEzMjMwNzQsImV4cCI6MTc4MTMzMDI3NH0.QlBRR2JW9_Uple3UKR5tpB6ZtY8p2RRyvkc3f4gWfKI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/usuarios/editar/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "editar",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "EditarUsuario-idUsuarioMal",
       "request": {
         "auth": {
@@ -1039,7 +1310,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1085,7 +1356,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1100,7 +1371,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1131,7 +1402,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1177,7 +1448,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1192,7 +1463,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n ,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1223,7 +1494,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1269,7 +1540,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1284,7 +1555,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1315,7 +1586,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1361,7 +1632,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1376,7 +1647,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  ,\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1407,7 +1678,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1453,7 +1724,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1468,7 +1739,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  ,\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"email\": \"johan.editado@j2rp.com\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1499,7 +1770,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1545,7 +1816,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1591,7 +1862,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1606,7 +1877,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  ,\r\n  \"telefono\": \"2281234567\"\r\n}",
+          "raw": "{\r\n  \"idRol\": 2,\r\n  \"idTipoUsuario\": 1,\r\n  \"idProgramaEducativo\": 1,\r\n  \"nombre\": \"Johan Editado\",\r\n  \"apellidoPaterno\": \"Andrade\",\r\n  \"apellidoMaterno\": \"Merino\",\r\n  \"telefono\": \"2281234567\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1637,7 +1908,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1683,7 +1954,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1729,7 +2000,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1775,7 +2046,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1821,7 +2092,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1867,7 +2138,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1913,7 +2184,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -1959,7 +2230,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2005,7 +2276,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2051,7 +2322,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2091,6 +2362,9 @@
             "verPerfil",
             "4"
           ]
+        },
+        "auth": {
+          "type": "noauth"
         }
       },
       "response": []
@@ -2127,6 +2401,37 @@
       "response": []
     },
     {
+      "name": "VerPerfil-tokenExpirado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODEzMjMwNzQsImV4cCI6MTc4MTMzMDI3NH0.QlBRR2JW9_Uple3UKR5tpB6ZtY8p2RRyvkc3f4gWfKI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/verPerfil/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "verPerfil",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "VerPerfilSin-idUsuario",
       "request": {
         "auth": {
@@ -2134,7 +2439,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2164,7 +2469,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2195,7 +2500,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2227,7 +2532,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2235,7 +2540,7 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "http://localhost:8082/usuarios/actualizarEstatus/3/2",
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/2/1",
           "protocol": "http",
           "host": [
             "localhost"
@@ -2244,8 +2549,8 @@
           "path": [
             "usuarios",
             "actualizarEstatus",
-            "3",
-            "2"
+            "2",
+            "1"
           ]
         }
       },
@@ -2269,6 +2574,9 @@
             "4",
             "2"
           ]
+        },
+        "auth": {
+          "type": "noauth"
         }
       },
       "response": []
@@ -2306,6 +2614,38 @@
       "response": []
     },
     {
+      "name": "CambiarEstatus-tokenExpirado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODEzMjMwNzQsImV4cCI6MTc4MTMzMDI3NH0.QlBRR2JW9_Uple3UKR5tpB6ZtY8p2RRyvkc3f4gWfKI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/6/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "usuarios",
+            "actualizarEstatus",
+            "6",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "CambiarEstatusSin-idUsuario",
       "request": {
         "auth": {
@@ -2313,7 +2653,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2345,7 +2685,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2377,7 +2717,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2409,7 +2749,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE0ODEyNzEsImV4cCI6MTc4MTQ4ODQ3MX0.nlJ0TMH6XtV6_1aRFlDhVmmNbNjxoDgcTSTOm7VksDU",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJpZFVzdWFyaW8iOjIsImlkUm9sIjoxLCJpYXQiOjE3ODE2NTY2MzUsImV4cCI6MTc4MTY2MzgzNX0.i7HovBqUfOpJiyyoprGdwFAZexxvCdXdh3lHO0e-cR4",
               "type": "string"
             }
           ]
@@ -2441,7 +2781,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNb25jaGlzMTIzIiwiaWRVc3VhcmlvIjozLCJpZFJvbCI6MiwiaWF0IjoxNzgxNDgxMTQ5LCJleHAiOjE3ODE0ODgzNDl9.00jwLEItS-p-MGeb0qPEQOvqz8hoo-Qw46KIjQ1wFUk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFuZ29sb2tveW9zb3kiLCJpZFVzdWFyaW8iOjQsImlkUm9sIjoyLCJpYXQiOjE3ODE2NTY2MDksImV4cCI6MTc4MTY2MzgwOX0.k8UFhTQkDXUf4WezfPWlR_nUw27nTnbhQFTlDGbvnOA",
               "type": "string"
             }
           ]
@@ -2449,7 +2789,7 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "http://localhost:8082/usuarios/actualizarEstatus/4/2",
+          "raw": "http://localhost:8082/usuarios/actualizarEstatus/6/2",
           "protocol": "http",
           "host": [
             "localhost"
@@ -2458,7 +2798,7 @@
           "path": [
             "usuarios",
             "actualizarEstatus",
-            "4",
+            "6",
             "2"
           ]
         }
